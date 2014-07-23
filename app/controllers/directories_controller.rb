@@ -4,7 +4,7 @@ class DirectoriesController < ApplicationController
   # GET /directories
   # GET /directories.json
   def index
-    @directories = Directory.where(project_id: session[:project_id])
+    @project = Project.find(session[:project_id]) || page_not_found
     @showed = []
   end
 
@@ -16,6 +16,9 @@ class DirectoriesController < ApplicationController
   # GET /directories/new
   def new
     @directory = Directory.new
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   # GET /directories/1/edit
@@ -26,7 +29,7 @@ class DirectoriesController < ApplicationController
   # POST /directories.json
   def create
     @directory = Directory.new(directory_params)
-
+    @directory.project_id = session[:project_id]
     respond_to do |format|
       if @directory.save
         format.html { redirect_to @directory, notice: 'Directory was successfully created.' }
@@ -70,6 +73,6 @@ class DirectoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def directory_params
-      params.require(:directory).permit(:name, :path, :project_id)
+      params.require(:directory).permit(:name, :path, :parent_id)
     end
 end

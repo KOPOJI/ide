@@ -8,6 +8,9 @@ li.nav-list-inner {
   margin: 4px;
   margin-left:-5px;
 }
+.left .well {
+  height: 100%;
+}
 
 .left ul, .left li {
   list-style-type: none;
@@ -23,4 +26,7 @@ li.nav-list-inner {
     color: green;
     //background-color: transparent;
   }
+}
+#modal-window {
+  padding: 15px;
 }

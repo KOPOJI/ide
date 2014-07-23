@@ -12,6 +12,9 @@ class FilesController < ApplicationController
 
   def new_file
     @file = DataSet.new
+    if request.xhr?
+      render :new_file, layout: false
+    end
   end
 
   def new_file_from_template

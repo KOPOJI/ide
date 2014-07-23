@@ -1,5 +1,5 @@
-  <li class="nav-list-inner">
-    <a href="#"><%= fa_icon 'folder-open' %> <%= directory.name %></a>
+  <li class="nav-list-inner" data-id="<%= directory.id %>">
+    <a href="#" class="directory"><%= fa_icon 'folder-open' %> <%= directory.name %></a>
     <%= render 'files/file', files: directory.files if directory.files.any? %>
     <% @showed << directory.id %>
     <%= nested_directory directory.child %>

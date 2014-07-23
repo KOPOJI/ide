@@ -1,3 +1,26 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#directory_context, #context {
+  position: absolute;
+  background-color: #fff;
+  z-index: 99;
+  list-style-type: none;
+  border-radius: 5px;
+  li {
+    padding-left: 5px;
+    display: block;
+    &:hover {
+      background-color: #24a9ff;
+    }
+    a {
+      cursor: default;
+      padding: 3px 10px;
+      font-family: arial, sans-serif;
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+}
