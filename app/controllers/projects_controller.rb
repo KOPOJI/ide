@@ -7,7 +7,12 @@ class ProjectsController < ApplicationController
     if session[:project_id].blank? or session[:project_id] =~ /\d+/
       @projects = Project.all
     else
-      @project = Project.find(session[:project_id]) || page_not_found
+      begin
+        @project = Project.find(session[:project_id]) || page_not_found
+      rescue ActiveRecord::RecordNotFound => e
+        reset_session
+        page_not_found and return
+      end
       redirect_to "/#{@project.project_url}.html"
     end
   end

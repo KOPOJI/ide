@@ -1,23 +1,20 @@
 <% content_for :left_sidebar do %>
     <nobr>
-      <% directory = @directories.shift %>
+      <% directory = @project.directories.shift %>
       <ul>
-        <li class="header">
-          <%= fa_icon 'folder-open' %> <%= directory.name %>
+        <li class="header directory" data-id="">
+          <%= fa_icon 'folder-open' %> <%= @project.name %>
         </li>
-        <%= render 'files/file', files: directory.files if directory.files.any? %>
-        <%= nested_directory @directories, @showed %>
+        <%= render 'files/file', files: directory.files if directory.present? && directory.files.any? %>
+        <%= nested_directory @project.directories, @showed %>
       </ul>
     </nobr>
 <% end %>
 
 <%= render 'files/tab' %>
-<%= javascript_tag do %>
-    $(function() {
-        $("#files ul li a:first").tab('show')
-        $(".tab-pane").first().show()
-    })
-<% end %>
+
+<%= javascript_tag render template: 'directories/directories.js.erb.coffee' %>
+
 <br>
 
 <%= link_to 'New Directory', new_directory_path %>
