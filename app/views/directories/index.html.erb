@@ -1,0 +1,23 @@
+<% content_for :left_sidebar do %>
+    <nobr>
+      <% directory = @directories.shift %>
+      <ul>
+        <li class="header">
+          <%= fa_icon 'folder-open' %> <%= directory.name %>
+        </li>
+        <%= render 'files/file', files: directory.files if directory.files.any? %>
+        <%= nested_directory @directories, @showed %>
+      </ul>
+    </nobr>
+<% end %>
+
+<%= render 'files/tab' %>
+<%= javascript_tag do %>
+    $(function() {
+        $("#files ul li a:first").tab('show')
+        $(".tab-pane").first().show()
+    })
+<% end %>
+<br>
+
+<%= link_to 'New Directory', new_directory_path %>

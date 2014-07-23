@@ -1,0 +1,26 @@
+li.nav-list-inner {
+  margin-left: 10px;
+}
+.left ul li.header {
+  font-weight: bold;
+  font-size: 15px;
+  color: #000090;
+  margin: 4px;
+  margin-left:-5px;
+}
+
+.left ul, .left li {
+  list-style-type: none;
+}
+.left ul li {
+  display: inline-block;
+}
+.left ul li a {
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  &:hover {
+    color: green;
+    //background-color: transparent;
+  }
+}

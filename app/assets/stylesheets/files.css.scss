@@ -1,0 +1,38 @@
+// Place all the styles related to the Files controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.file-type-icon {
+  width: 15px;
+  margin: 1px;
+  margin-top:-2px;
+}
+.left .list-files li {
+  display: block;
+}
+.left .well {
+  padding: 0;
+}
+#files {
+  height: 100%;
+  #context {
+    position: relative;
+    background-color: #FCFCFC;
+    z-index: 99;
+    list-style-type: none;
+    left: -10px;
+    width:70%;
+    li {
+      padding-left: 5px;
+    }
+  }
+}
+.code {
+  position: absolute!important;
+  top: 120px!important;
+  right: 0!important;
+  bottom: 0!important;
+  left: 320px!important;
+}
+.unsaved {
+  color:navy
+}

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @file.name %>
+</p>
+
+<p>
+  <strong>Extension:</strong>
+  <%= @file.extension %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @file.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @file.user_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @file.directory_id %>
+</p>
+
+<%#= link_to 'Edit', edit_file_path(@file) %> |
+<%#= link_to 'Back', files_index_path %>

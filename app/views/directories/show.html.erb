@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @directory.name %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @directory.path %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @directory.project_id %>
+</p>
+
+<%= link_to 'Edit', edit_directory_path(@directory) %> |
+<%= link_to 'Back', directories_path %>
