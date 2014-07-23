@@ -16,6 +16,7 @@ $ ->
     id = if $(@).parent().attr("data-id") then $(@).parent().attr("data-id") else null
     $("#directory_context").attr("data-id", id)
     $("#directory_context").offset({left: e.pageX + 10, top: e.pageY - 5})
+
     $(window).click -> $("#directory_context").remove()
 
     $("#new_dir").click (e) ->
@@ -46,3 +47,13 @@ $ ->
       return false
 
     return false
+#
+#  elems = $("#files ul li")
+#
+#  for i in [1..elems.length]
+#    el = $(elems[i]).find("a")[0]
+#    if el && $("." + el.className).length > 1
+#      $("#" + el.className).parent().remove()
+#      $(el).parent().remove()
+#  $("#files ul li a:first").tab('show')
+#  $(".tab-pane").first().show()
