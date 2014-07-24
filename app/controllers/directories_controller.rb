@@ -4,7 +4,19 @@ class DirectoriesController < ApplicationController
   # GET /directories
   # GET /directories.json
   def index
-    @project = Project.find(session[:project_id]) || page_not_found
+    if session[:project_id].present?
+      if params[:project].present?
+        @project = Project.find_by(id: session[:project_id], project_url: params[:project].sub('.html', '')) || (page_not_found and return)
+      else
+        @project = Project.find(session[:project_id]) || (page_not_found and return)
+      end
+    elsif session[:project_id].nil? && params[:project].present?
+      @project = Project.find_by(project_url: params[:project].sub('.html', '')) || (page_not_found and return)
+      session[:project_id] = @project.id
+    else
+      page_not_found and return
+    end
+    @opened_files = DataSet.where(opened: true, project_id: @project.id)
     @showed = []
   end
 
@@ -32,8 +44,7 @@ class DirectoriesController < ApplicationController
     @directory.project_id = session[:project_id]
     respond_to do |format|
       if @directory.save
-        format.html { redirect_to @directory, notice: 'Directory was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @directory }
+        format.html { redirect_to root_path }
       else
         format.html { render action: 'new' }
         format.json { render json: @directory.errors, status: :unprocessable_entity }
@@ -46,7 +57,7 @@ class DirectoriesController < ApplicationController
   def update
     respond_to do |format|
       if @directory.update(directory_params)
-        format.html { redirect_to @directory, notice: 'Directory was successfully updated.' }
+        format.html { redirect_to root_path }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

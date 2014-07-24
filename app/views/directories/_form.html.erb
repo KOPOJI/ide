@@ -1,7 +1,8 @@
-<%= form_for(@directory) do |f| %>
+<%= form_for @directory, remote: true, url: "/directories/#{@directory.id}" do |f| %>
+
   <% if @directory.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@directory.errors.count, "error") %> prohibited this directory from being saved:</h2>
+      <h2><%= pluralize(@directory.errors.count, 'error') %> prohibited this directory from being saved:</h2>
 
       <ul>
       <% @directory.errors.full_messages.each do |msg| %>

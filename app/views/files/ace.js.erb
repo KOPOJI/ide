@@ -1,0 +1,42 @@
+editor = ace.edit("file_text<%= @file.id %>")
+editor.getSession().setUseWorker(true);
+editor.getSession().setUseWrapMode(true);
+editor.getSession().setUseWrapMode(true);
+
+editor.setHighlightActiveLine(true);
+editor.renderer.setShowGutter(true)
+editor.setFontSize('15px')
+editor.getSession().setMode("ace/mode/c_cpp")
+editor.setTheme("ace/theme/xcode")
+$("#file_text<%= @file.id %>").show()
+$("#file_text<%= @file.id %>").children().show()
+$('#files ul li a').click(function (e) {
+    e.preventDefault()
+
+})
+window.onload = function() { editor.session.getUndoManager().reset() }
+
+editor.getSession().on('change', function () {
+    var el = $(".active").children("a")
+  var undoManager = editor.session.getUndoManager()
+  console.log(undoManager.isClean())
+
+    if (-1 === el.html().indexOf("*"))
+        el.append('<span class="unsaved">*</span>')
+
+});
+editor.commands.addCommand({
+    name: 'saveFile',
+    bindKey: {
+        win: 'Ctrl-S',
+        mac: 'Command-S',
+        sender: 'editor|cli'
+    },
+    exec: function (env, args, request) {
+        var id = $($(".active").parent().find(".active")[0]).children().attr("class").substring(4)
+        var tmp = ace.edit("file_text" + id)
+        $.get("/file/save_file", {id: id, text: tmp.getSession().getValue()}, function (ans) {
+            $(".active").children("a").find(".unsaved").remove()
+        });
+    }
+});

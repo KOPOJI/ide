@@ -4,13 +4,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    if session[:project_id].blank? or session[:project_id] =~ /\d+/
+    if session[:project_id].blank? or !session[:project_id] =~ /\d+/
       @projects = Project.all
     else
       begin
         @project = Project.find(session[:project_id]) || page_not_found
       rescue ActiveRecord::RecordNotFound => e
-        reset_session
+        session[:project_id] = nil
         page_not_found and return
       end
       redirect_to "/#{@project.project_url}.html"
@@ -27,6 +27,10 @@ class ProjectsController < ApplicationController
 
   def open
     @projects = Project.all
+  end
+  def close
+    session[:project_id] = nil
+    redirect_to root_path
   end
   # GET /projects/new
   def new

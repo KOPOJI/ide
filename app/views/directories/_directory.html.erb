@@ -2,5 +2,5 @@
     <a href="#" class="directory"><%= fa_icon 'folder-open' %> <%= directory.name %></a>
     <%= render 'files/file', files: directory.files if directory.files.any? %>
     <% @showed << directory.id %>
-    <%= nested_directory directory.child %>
+    <%= nested_directory directory.child, @showed %>
   </li>

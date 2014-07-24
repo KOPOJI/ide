@@ -9,6 +9,7 @@ class Directory < ActiveRecord::Base
   has_many :child, class_name: 'Directory', foreign_key: 'parent_id'
   belongs_to :parent, class_name: 'Directory', foreign_key: 'parent_id'
 
+  validates_presence_of :name
 
   accepts_nested_attributes_for :child
 

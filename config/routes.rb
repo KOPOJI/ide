@@ -3,7 +3,7 @@ Ide::Application.routes.draw do
 
   resources :data_sets, controller: 'files'
 
-  get '/projects/open', to: 'projects#open'
+  get '/projects/:action', to: 'projects#:action', constraints: {action: /open|close/i}
   resources :projects
 
   devise_for :users

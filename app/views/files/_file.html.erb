@@ -3,6 +3,7 @@
   <% files.each do |f| %>
       <li>
         <%= link_to "#{file_type_image f.extension} #{f.name}".html_safe, create_url(directory_path(f.directory), f.name), 'data-id' => f.id, onclick: 'return false', ondblclick: "
+
         if($('.file#{f.id}').length)
         {
             $('#files ul li').removeClass('active')
@@ -23,6 +24,6 @@
         }, 'script')
         " %>
       </li>
-      <%= javascript_tag render('files/file.js.erb.coffee', file: f), 'data-turbolinks-eval' => false if f.opened.present? %>
+      <%#= javascript_tag render('files/file.js.erb.coffee', file: f), 'data-turbolinks-eval' => false if f.opened.present? %>
   <% end %>
 </ul>

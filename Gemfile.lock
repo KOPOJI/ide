@@ -58,7 +58,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
-    font-awesome-rails (4.0.3.2)
+    font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     haml (4.0.5)
       tilt
@@ -140,7 +140,7 @@ GEM
     turbolinks (2.2.2)
       coffee-rails
     tzinfo (0.3.40)
-    uglifier (2.5.1)
+    uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)

@@ -24,7 +24,7 @@ class FilesController < ApplicationController
     head :bad_request and return unless request.xhr? or params[:id].present?
     @file = DataSet.find_by_id(params[:id]) || page_not_found
     @file.update(opened: true)
-    render 'files/_file.js.erb.coffee', locals: {file: @file }
+    render 'files/_file.js.erb.coffee', locals: {file: @file } if request.xhr?
   end
 
   def close_file
@@ -77,13 +77,13 @@ class FilesController < ApplicationController
   # POST /files.json
   def create
     @file = DataSet.new(file_params)
-
     respond_to do |format|
+      @file.user_id = 1 #current_user.id
       if @file.save
-        format.html { redirect_to @file, notice: 'Files was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @file }
+        format.html { render text: 'created', layout: false, status: :created }
+        format.json { render json: @file.errors, status: :created }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new_file', layout: false }
         format.json { render json: @file.errors, status: :unprocessable_entity }
       end
     end

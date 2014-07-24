@@ -1,7 +1,19 @@
 <div id="files">
   <ul class="nav nav-tabs" role="tablist">
+    <% @opened_files.each do |file| %>
+      <li>
+        <a class="file<%= file.id %>" href="#file<%= file.id %>" role="tab" data-toggle="tab" title="<%= create_url directory_path(file.directory), file.name %>">
+          <%= file.name %>
+        </a>
+      </li>
+    <% end %>
   </ul>
   <div class="tab-content">
+    <% @opened_files.each do |file| %>
+      <div class="tab-pane">
+        <%= render(partial: "files/text", locals: {id: file.id}) %>
+      </div>
+    <% end %>
   </div>
 </div>
-<%= javascript_tag render template: 'files/files.js.erb.coffee' %>
+<%#= javascript_tag render template: 'files/files.js.erb.coffee' %>
