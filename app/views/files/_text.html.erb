@@ -1,7 +1,7 @@
 <% @file = DataSet.find_by_id(id) %>
 <div id="file<%= @file.id %>" style="display: block">
 
-  <div id="file_text<%= @file.id %>" class="code"><%= @file.text %></div>
+  <div id="file_text<%= @file.id %>" class="code"  data-editor="<%= @file.extension %>"><%= @file.text %></div>
 
 </div>
 <%= simple_form_for @file do |f| %>

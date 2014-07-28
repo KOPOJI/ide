@@ -14,7 +14,13 @@ class DataSet < ActiveRecord::Base
   end
 
   before_save do
-    self.project_id = self.directory.project_id
+    if self.directory_id.present?
+      self.project_id = self.directory.project_id
+    end
     self.extension = File.extname(name)[1..-1]
   end
+  def root_files project_id
+    DataSet.where(directory_id: nil, project_id: project_id)
+  end
+
 end

@@ -14,13 +14,23 @@ $ ->
       $('#directory_context').remove()
 
   #on menu on tabs show dialog
-  $("#files ul li a").contextmenu (e) ->
+  $(document).on 'contextmenu', '#files ul li a', (e) ->
     e.preventDefault
     $('#context').remove()
 
     $(@).parent().append("<%= j render 'files/dialog' %>")
 
     $("#context").offset({left: e.pageX + 5, top: e.pageY + 5})
+
+    #on click to "Save" send ajax request to controller save this file method
+    $("#save").click (e) ->
+      e.preventDefault
+      id = $(@).parent().parent().parent().find('a')[0].className.substring(4)
+      tmp = ace.edit("file_text" + id)
+      $.get "/file/save_file", {id: id, text: tmp.getSession().getValue()}, (ans) ->
+        $(".active").children("a").find(".unsaved").remove()
+        $("#context").remove()
+      return false
 
     #on click to "Close" send ajax request to controller close this file method
     $("#close").click (e) ->

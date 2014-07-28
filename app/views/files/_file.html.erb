@@ -2,28 +2,7 @@
 
   <% files.each do |f| %>
       <li>
-        <%= link_to "#{file_type_image f.extension} #{f.name}".html_safe, create_url(directory_path(f.directory), f.name), 'data-id' => f.id, onclick: 'return false', ondblclick: "
-
-        if($('.file#{f.id}').length)
-        {
-            $('#files ul li').removeClass('active')
-            $('.file#{f.id}').parent().addClass('active')
-            $('#files .tab-pane').children().removeClass('active')
-            $('#files .tab-pane').hide()
-            $('.file#{f.id}').tab('show')
-            $('#file#{f.id}').parent().show()
-            return false
-        }
-        $.get('/file/open_file', {id: #{f.id}}, function() {
-            $('#files ul li').removeClass('active')
-            $('.file#{f.id}').parent().addClass('active')
-            $('#files .tab-pane').children().removeClass('active')
-            $('#files .tab-pane').hide()
-            $('.file#{f.id}').tab('show')
-            $('#file#{f.id}').parent().show()
-        }, 'script')
-        " %>
+        <%= link_to "#{file_type_image f.extension} #{f.name}".html_safe, create_url(directory_path(f.directory), f.name), 'data-id' => f.id, onclick: 'return false' %>
       </li>
-      <%#= javascript_tag render('files/file.js.erb.coffee', file: f), 'data-turbolinks-eval' => false if f.opened.present? %>
   <% end %>
 </ul>

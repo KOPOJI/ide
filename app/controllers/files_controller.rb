@@ -77,8 +77,8 @@ class FilesController < ApplicationController
   # POST /files.json
   def create
     @file = DataSet.new(file_params)
+    @file.project_id = session[:project_id]
     respond_to do |format|
-      @file.user_id = 1 #current_user.id
       if @file.save
         format.html { render text: 'created', layout: false, status: :created }
         format.json { render json: @file.errors, status: :created }

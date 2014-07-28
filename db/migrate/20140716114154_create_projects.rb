@@ -6,6 +6,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :title
       t.integer :user_id
       t.boolean :status
+      t.string :project_url
+      t.boolean :removed
 
       t.timestamps
     end

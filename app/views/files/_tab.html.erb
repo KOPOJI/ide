@@ -3,7 +3,7 @@
     <% @opened_files.each do |file| %>
       <li>
         <a class="file<%= file.id %>" href="#file<%= file.id %>" role="tab" data-toggle="tab" title="<%= create_url directory_path(file.directory), file.name %>">
-          <%= file.name %>
+          <%= file_type_image file.extension %> <%= file.name %>
         </a>
       </li>
     <% end %>
@@ -16,4 +16,3 @@
     <% end %>
   </div>
 </div>
-<%#= javascript_tag render template: 'files/files.js.erb.coffee' %>

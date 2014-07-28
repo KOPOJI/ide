@@ -11,27 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724074233) do
+ActiveRecord::Schema.define(version: 20140718075725) do
 
   create_table "data_sets", force: true do |t|
     t.string   "name"
     t.string   "extension"
     t.text     "text"
-    t.integer  "user_id"
     t.integer  "directory_id"
     t.boolean  "opened"
+    t.boolean  "removed"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
   end
 
   create_table "directories", force: true do |t|
     t.string   "name"
     t.string   "path"
     t.integer  "project_id"
+    t.integer  "parent_id"
+    t.boolean  "removed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id"
   end
 
   create_table "projects", force: true do |t|
@@ -39,9 +40,10 @@ ActiveRecord::Schema.define(version: 20140724074233) do
     t.string   "title"
     t.integer  "user_id"
     t.boolean  "status"
+    t.string   "project_url"
+    t.boolean  "removed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "project_url"
   end
 
   create_table "users", force: true do |t|

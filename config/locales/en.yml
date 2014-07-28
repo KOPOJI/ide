@@ -21,3 +21,4 @@
 
 en:
   hello: "Hello world"
+  Are you sure?: 'Are you sure? It will be remove all child directories and files.'

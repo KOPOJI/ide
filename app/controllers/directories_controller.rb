@@ -1,5 +1,5 @@
 class DirectoriesController < ApplicationController
-  before_action :set_directory, only: [:show, :edit, :update, :destroy]
+  before_action :set_directory, only: [:show, :edit, :update]
 
   # GET /directories
   # GET /directories.json
@@ -16,6 +16,7 @@ class DirectoriesController < ApplicationController
     else
       page_not_found and return
     end
+    @directories = @project.directories.to_a
     @opened_files = DataSet.where(opened: true, project_id: @project.id)
     @showed = []
   end
@@ -35,6 +36,7 @@ class DirectoriesController < ApplicationController
 
   # GET /directories/1/edit
   def edit
+    render :edit, layout: false
   end
 
   # POST /directories
@@ -44,9 +46,11 @@ class DirectoriesController < ApplicationController
     @directory.project_id = session[:project_id]
     respond_to do |format|
       if @directory.save
-        format.html { redirect_to root_path }
+        format.html { render text: 'created', layout: false, status: :created }
+        format.json { render json: @directory.errors, status: :created }
       else
-        format.html { render action: 'new' }
+        params[:id] = @directory.parent_id
+        format.html { render action: 'new', layout: false }
         format.json { render json: @directory.errors, status: :unprocessable_entity }
       end
     end
@@ -57,10 +61,11 @@ class DirectoriesController < ApplicationController
   def update
     respond_to do |format|
       if @directory.update(directory_params)
-        format.html { redirect_to root_path }
+        format.html { render text: 'created', layout: false, status: :created }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        params[:id] = @directory.parent_id
+        format.html { render action: 'edit', layout: false }
         format.json { render json: @directory.errors, status: :unprocessable_entity }
       end
     end
@@ -69,9 +74,10 @@ class DirectoriesController < ApplicationController
   # DELETE /directories/1
   # DELETE /directories/1.json
   def destroy
-    @directory.destroy
+    Directory.find(params[:id]).destroy!
+
     respond_to do |format|
-      format.html { redirect_to directories_url }
+      format.html { render text: 'created', layout: false, status: :created }
       format.json { head :no_content }
     end
   end

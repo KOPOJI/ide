@@ -7,3 +7,4 @@ $("#files ul").append(
 $("#files .tab-content").append(
   '<div class="tab-pane"><%= escape_javascript render(partial: "files/text", locals: {id: file.id}) %></div>'
 )
+

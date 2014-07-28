@@ -5,6 +5,8 @@ class CreateDirectories < ActiveRecord::Migration
       t.string :name
       t.string :path
       t.integer :project_id
+      t.integer :parent_id
+      t.boolean :removed
 
       t.timestamps
     end

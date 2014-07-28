@@ -4,9 +4,10 @@ class CreateDataSets < ActiveRecord::Migration
       t.string :name
       t.string :extension
       t.text :text
-      t.integer :user_id
       t.integer :directory_id
       t.boolean :opened
+      t.boolean :removed
+      t.integer :project_id
 
       t.timestamps
     end

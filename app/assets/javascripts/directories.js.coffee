@@ -1,5 +1,5 @@
 $ ->
-  $('.left ul li a').click (e) ->
+  $(document).on 'click', '.left ul li a', (e) ->
     e.preventDefault()
     chld = $(@.children[0])
     if chld.hasClass('fa-folder-open')

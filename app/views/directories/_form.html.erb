@@ -16,7 +16,8 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <%= f.hidden_field :parent_id, value: params[:id] %>
+  <%= f.hidden_field :parent_id, value: params[:id] if @directory.new_record? %>
+  <%= f.hidden_field :project_id, value: session[:project_id] %>
   <div class="actions">
     <%= f.submit %>
   </div>

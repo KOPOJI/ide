@@ -10,6 +10,7 @@ module DirectoriesHelper
 
   def directory_path dir
     file_path = ''
+    return file_path if dir.nil?
     while dir.parent
       file_path += '/' + dir.name
       dir = dir.parent
