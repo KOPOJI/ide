@@ -1,5 +1,6 @@
 class FilesController < ApplicationController
   before_action :set_file, only: [:show, :edit, :update, :destroy]
+  layout false
 
   def index
   end
@@ -78,11 +79,13 @@ class FilesController < ApplicationController
   def create
     @file = DataSet.new(file_params)
     @file.project_id = session[:project_id]
+    @file.directory_id = params[:id] if params[:id]
     respond_to do |format|
       if @file.save
         format.html { render text: 'created', layout: false, status: :created }
         format.json { render json: @file.errors, status: :created }
       else
+        params[:id] = @file.directory_id
         format.html { render action: 'new_file', layout: false }
         format.json { render json: @file.errors, status: :unprocessable_entity }
       end
@@ -92,12 +95,14 @@ class FilesController < ApplicationController
   # PATCH/PUT /files/1
   # PATCH/PUT /files/1.json
   def update
+    @file.project_id = session[:project_id]
     respond_to do |format|
       if @file.update(file_params)
-        format.html { redirect_to @file, notice: 'Files was successfully updated.' }
+        format.html { render text: 'created', layout: false, status: :created }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        params[:id] = @file.directory_id
+        format.html { render action: 'edit', layout: false }
         format.json { render json: @file.errors, status: :unprocessable_entity }
       end
     end
@@ -108,7 +113,7 @@ class FilesController < ApplicationController
   def destroy
     @file.destroy
     respond_to do |format|
-      format.html { redirect_to files_index_url }
+      format.html { render text: 'created', layout: false, status: :created }
       format.json { head :no_content }
     end
   end

@@ -6,21 +6,16 @@ class DataSet < ActiveRecord::Base
   validates_presence_of :name
 
   before_validation do
+    f = DataSet.where(directory_id: self.directory_id, name: self.name)
+    return if f.count.zero?
     if self.new_record?
-      unless DataSet.where(directory_id: self.directory_id, name: self.name).count.zero?
-        errors.add(:name, 'File with this name already exists.')
-      end
+      errors.add(:name, 'File with this name already exists.') if !f.count.zero?
+    else
+      errors.add(:name, 'File with this name already exists.') if self.id && f[0].id != self.id && !f.count.zero?
     end
   end
 
   before_save do
-    if self.directory_id.present?
-      self.project_id = self.directory.project_id
-    end
     self.extension = File.extname(name)[1..-1]
   end
-  def root_files project_id
-    DataSet.where(directory_id: nil, project_id: project_id)
-  end
-
 end

@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require twitter/bootstrap
 //= require ace/ace
+//= require ace/ext-language_tools
 //= require_tree .

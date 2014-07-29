@@ -1,5 +1,10 @@
 <ul id="context">
-  <li><a id="save" href="#">Save</a></li>
-  <li><a id="close" href="#">Close</a></li>
-  <li><a id="close_all" href="#">Close all</a></li>
+  <% if tab %>
+    <li><a id="save_file" href="#"><%= t 'save' %></a></li>
+    <li><a id="close_file" href="#"><%= t 'close' %></a></li>
+    <li><a id="close_all_files" href="#"><%= t 'close_all' %></a></li>
+  <% else %>
+    <li><a id="rename_file" href="#"><%= t 'rename' %></a></li>
+    <li><a id="remove_file" href="#"><%= t 'remove' %></a></li>
+  <% end %>
 </ul>

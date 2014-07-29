@@ -2,7 +2,7 @@ Ide::Application.routes.draw do
   resources :directories
   delete '/directories', to: 'directories#destroy'
 
-  resources :data_sets, controller: 'files'
+  resources :data_sets, controller: 'files', path: 'files'
 
   get '/projects/:action', to: 'projects#:action', constraints: {action: /open|close/i}
   resources :projects

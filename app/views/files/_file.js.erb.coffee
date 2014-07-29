@@ -1,6 +1,7 @@
 $("#files ul").append(
   '<li><a class="file<%= file.id %>" href="#file<%= file.id %>" role="tab" data-toggle="tab" title="<%= create_url directory_path(file.directory), file.name %>">
   <%= file.name %>
+  <span class="close_tab" data-id="<%= file.id %>"> × </span>
   </a>
   </li>'
 )

@@ -17,8 +17,12 @@ class Directory < ActiveRecord::Base
   has_many :data_sets
 
   before_validation do
-    unless Directory.where(parent_id: self.parent_id, name: self.name, project_id: self.project_id).count.zero?
-      errors.add(:name, 'File with this name already exists.')
+    d = Directory.where(parent_id: self.parent_id, name: self.name, project_id: self.project_id)
+    return if d.count.zero?
+    if self.new_record?
+      errors.add(:name, 'Directory with this name already exists.') if !d.count.zero?
+    else
+      errors.add(:name, 'Directory with this name already exists.') if self.id && d[0].id != self.id && !d.count.zero?
     end
   end
 

@@ -1,8 +1,9 @@
 <ul id="directory_context">
-  <li><a id="new_file" href="#">New file</a></li>
-  <li><a id="new_dir" href="#">New directory</a></li>
+  <li><a id="new_file" href="#"><%= t 'new_file' %></a></li>
+  <li><a id="new_file_from_template" href="#"><%= t 'new_file_from_template' %></a></li>
+  <li><a id="new_dir" href="#"><%= t 'new_dir' %></a></li>
   <% if !is_root %>
-    <li><a id="rename_dir" href="#">Rename directory</a></li>
-    <li><a id="remove_dir" href="#">Remove directory</a></li>
+    <li><a id="rename_dir" href="#"><%= t 'rename_dir' %></a></li>
+    <li><a id="remove_dir" href="#"><%= t 'remove_dir' %></a></li>
   <% end %>
 </ul>

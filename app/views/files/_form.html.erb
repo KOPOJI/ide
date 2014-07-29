@@ -15,9 +15,8 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <%= f.hidden_field :directory_id, value: params[:id] %>
+  <%= f.hidden_field :directory_id, value: params[:id] if @file.new_record?  %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-<%= javascript_tag render template: 'files/create_file.js.erb.coffee' %>

@@ -9,8 +9,9 @@ module DirectoriesHelper
   end
 
   def directory_path dir
-    file_path = ''
-    return file_path if dir.nil?
+    file_path = dir.name if dir.present? && dir.parent_id != -1
+    #return file_path if dir.nil?
+    puts dir.name
     while dir.parent
       file_path += '/' + dir.name
       dir = dir.parent

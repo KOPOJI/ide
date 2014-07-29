@@ -5,6 +5,11 @@ $ ->
     $("#files ul li a:first").tab('show')
     $(".tab-pane").first().show()
 
+  $(document).on 'click', '#files ul li a .close_tab', (e) ->
+    e.preventDefault
+    $.get '/file/close_file', {id: $(@).attr('data-id')}, null, 'script'
+    return false
+
   #on tab click hide old tabs and show current
   $(document).on 'click', '#files ul li a', (e) ->
     e.preventDefault()
@@ -14,6 +19,7 @@ $ ->
     $("#" + @.className).parent().show()
     $("#file" + $(@).attr('data-id')).show()
 
+  #open file on link dblclick
   $(document).on 'dblclick', '.list-files a', (e) ->
     id = $(@).attr("data-id")
 

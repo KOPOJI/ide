@@ -25,3 +25,13 @@
 .unsaved {
   color:navy
 }
+.close_tab {
+  position: relative;
+  right: -7px;
+  top:-10px;
+  cursor: pointer;
+  color: red;
+  &:hover {
+    text-shadow: 0 0 10px blue;
+  }
+}

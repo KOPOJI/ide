@@ -1,0 +1,41 @@
+ru:
+
+  #dialogs
+  save: 'Сохранить'
+  close: 'Закрыть'
+  close_all: 'Закрыть все'
+  rename: 'Переименовать'
+  remove: 'Удалить'
+  new_dir: 'Создать папку'
+  rename_dir: 'Переименовать папку'
+  remove_dir: 'Удалить папку'
+
+  #menu "File"
+  file: 'Файл'
+  new_project: 'Создать проект'
+  open_project: 'Открыть проект'
+  close_project: 'Закрыть проект'
+  new_file: 'Создать файл'
+  new_file_from_template: 'Создать файл из шаблона'
+  open_file: 'Открыть файл'
+  close_file: 'Закрыть файл'
+  settings: 'Настройки'
+  default_settings: 'Сбросить настройки'
+  save_file: 'Сохранить файл'
+  save__all_files: 'Сохранить все файлы'
+  print: 'Печать'
+
+  #menu "Edit"
+  edit: 'Правка'
+  undo: 'Отменить'
+  redo: 'Повторить'
+  cut: 'Вырезать'
+  copy: 'Копировать'
+  copy_path: 'Копировать путь файла'
+  paste: 'Вставить'
+  find: 'Найти'
+  select_all: 'Выделить все'
+  unselect: 'Снять выделение'
+  delete: 'Удалить файл'
+
+  Are you sure?: 'Вы уверены? Также удалятся все вложенные файлы и директории'

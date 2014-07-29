@@ -36,25 +36,22 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'edit' %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to t('new_project'), create_url('file', 'new_project') %></li>
-              <li><%= link_to t('open_project'), create_url('file', 'open_project') %></li>
-              <li><%= link_to t('close_project'), create_url('file', 'close_project') %></li>
+              <li class="disabled"><%= link_to raw("#{t('undo')} <span style='float:right'>Ctrl+Z</span>"), '#', id: 'undo' %></li>
+              <li class="disabled"><%= link_to raw("#{t('redo')}  <span style='float:right'>Ctrl+Y</span>"), '#', id: 'redo' %></li>
               <li class="divider"></li>
-              <li><%= link_to t('new_file'), create_url('file', 'new_file') %></li>
-              <li><%= link_to t('new_file_from_template'), create_url('file', 'new_file_from_template') %></li>
-              <li><%= link_to t('open_file'), create_url('file', 'open_file') %></li>
-              <li><%= link_to t('close_file'), create_url('file', 'close_file') %></li>
+              <li><%= link_to raw("#{t('cut')} <span style='float:right'>Ctrl+X</span>"), '#', id: 'cut' %></li>
+              <li><%= link_to raw("#{t('copy')} <span style='float:right'>Ctrl+C</span>"), '#', id: 'copy' %></li>
+              <li><%= link_to t('copy_path'), '#', id: 'copy_path' %></li>
+              <li><%= link_to raw("#{t('paste')} <span style='float:right'>Ctrl+V</span>"), '#', id: 'paste' %></li>
               <li class="divider"></li>
-              <li><%= link_to t('settings'), create_url('file', 'settings') %></li>
-              <li><%= link_to t('default_settings'), create_url('file', 'default_settings') %></li>
+              <li><%= link_to t('find'), '#', id: 'find' %></li>
+              <li><%= link_to t('select_all'), '#', id: 'select_all' %></li>
+              <li><%= link_to t('unselect'), '#', id: 'unselect' %></li>
               <li class="divider"></li>
-              <li><%= link_to t('save_file'), create_url('file', 'save_file') %></li>
-              <li><%= link_to t('save__all_files'), create_url('file', 'save_all_files') %></li>
-              <li class="divider"></li>
-              <li><%= link_to t('print'), create_url('file', 'print') %></li>
+              <li><%= link_to t('delete'), '#', id: 'delete' %></li>
             </ul>
           </li>
-
+<div style="display: none">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'view' %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -120,7 +117,7 @@
               <li><%= link_to t('print'), create_url('file', 'print') %></li>
             </ul>
           </li>
-
+</div>
         </ul>
       </div>
     </div>

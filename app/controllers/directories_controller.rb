@@ -29,9 +29,7 @@ class DirectoriesController < ApplicationController
   # GET /directories/new
   def new
     @directory = Directory.new
-    if request.xhr?
-      render :new, layout: false
-    end
+    render :new, layout: false if request.xhr?
   end
 
   # GET /directories/1/edit
@@ -59,6 +57,7 @@ class DirectoriesController < ApplicationController
   # PATCH/PUT /directories/1
   # PATCH/PUT /directories/1.json
   def update
+    @directory.project_id = session[:project_id]
     respond_to do |format|
       if @directory.update(directory_params)
         format.html { render text: 'created', layout: false, status: :created }
