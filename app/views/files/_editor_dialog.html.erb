@@ -1,0 +1,18 @@
+<ul id="editor_context" class="nav">
+  <% if cut %>
+    <li><%= link_to raw("#{t('cut')} <span style='float:right'>Ctrl+X</span>"), '#', id: 'cut' %></li>
+    <li><%= link_to raw("#{t('copy')} <span style='float:right'>Ctrl+C</span>"), '#', id: 'copy' %></li>
+    <li><%= link_to raw("#{t('paste')} <span style='float:right'>Ctrl+V</span>"), '#', id: 'paste' %></li>
+  <% end %>
+  <li><%= link_to t('copy_path'), '#', id: 'copy_path' %></li>
+  <li class="divider"></li>
+  <li><a id="save_file" href="#"><%= t 'save' %></a></li>
+  <li><a id="close_file" href="#"><%= t 'close' %></a></li>
+  <li><a id="close_all_files" href="#"><%= t 'close_all' %></a></li>
+  <li><a id="find" href="#"><%= t 'find' %></a></li>
+  <li><%= link_to t('find'), '#', id: 'find' %></li>
+  <li><%= link_to t('select_all'), '#', id: 'select_all' %></li>
+  <li><%= link_to t('unselect'), '#', id: 'unselect' %></li>
+  <li class="divider"></li>
+  <li><%= link_to t('delete'), '#', id: 'delete' %></li>
+</ul>

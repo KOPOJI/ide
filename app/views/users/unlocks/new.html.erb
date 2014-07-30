@@ -1,16 +1,13 @@
-<h2>Resend unlock instructions</h2>
+<%= render '/users/form', start: true, header: t('Resend unlock instructions') %>
 
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :unlock_token %>
+<%= simple_form_for resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post} do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
+    <div><%= f.label :email, t(:email) %>
+      <br/>
+      <%= f.email_field :email, autofocus: true %></div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend unlock instructions" %>
-  </div>
+    <div><%= f.submit t('Resend unlock instructions'), class: 'button' %></div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render '/users/form', start: false %>

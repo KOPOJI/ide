@@ -1,7 +1,7 @@
 body {
   min-width: 800px;
 }
-#directory_context, #context {
+#directory_context, #editor_context, #context {
   position: absolute;
   background-color: #fff;
   z-index: 99;
@@ -24,6 +24,7 @@ body {
       font-family: arial, sans-serif;
       &:hover {
         text-decoration: none;
+        background-color: transparent;
         color: #fff;
       }
     }

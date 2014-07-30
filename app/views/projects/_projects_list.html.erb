@@ -1,37 +1,27 @@
-<% if @projects.present? %>
-    <h1>Listing projects</h1>
+<div class="post">
+  <% if @projects.present? %>
+    <h3><%= t 'Listing projects' %></h3>
+    <% @projects.each do |project| %>
+      <div class="project">
+        <div class="span3">
+          <%= link_to project.name, create_url('projects', project.id) %>
+          <div class="project_title"><%= sanitize project.title %></div>
+          <small><%= t 'created_at' %> <%= project.created_at.to_formatted_s :ru_datetime %></small>
+        </div>
+        <div class="right span3">
+          <%= link_to t('Open'), create_url('projects', project.id) %>
+          <%= link_to t('Edit'), create_url(edit_project_path(project)) %>
+          <%= link_to t('Destroy'), project, method: :delete, data: {confirm: t('Are you sure?')} %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= t 'no_projects' %>
+  <% end %>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>User</th>
-        <th>Status</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
+  <br>
 
-      <tbody>
-      <% @projects.each do |project| %>
-          <tr>
-            <td><%= project.name %></td>
-            <td><%= project.title %></td>
-            <td><%= project.user_id %></td>
-            <td><%= project.status %></td>
-            <td><%= link_to t('Open'), create_url('projects', project.id) %></td>
-            <td><%= link_to 'Edit', edit_project_path(project) %></td>
-            <td><%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-<% else %>
-    Проектов не найдено
-<% end %>
-
-<br>
-
-<%= link_to 'New Project', create_url(new_project_path) %>
+  <div class="clearfix"></div>
+  <br>
+  <%= link_to t('new_project'), create_url(new_project_path) %>
+</div>

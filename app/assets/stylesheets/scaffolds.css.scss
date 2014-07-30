@@ -1,0 +1,45 @@
+.post {
+  background-color: #FAFAFA;
+  padding: 5px 25px;
+  border-radius: 10px;
+  width: 900px;
+  .project {
+    display: inline-block;
+    clear: both;
+    margin-bottom: 5px;
+    box-shadow: 0 0 5px rgba(25, 116, 234, 0.42);
+    border-radius: 3px;
+    .span3 {
+      &:nth-child(2) {
+        margin-top: 15px;
+      }
+      background: transparent;
+    }
+  }
+  .project:nth-child(even) {
+    background-color: rgba(234, 234, 234, 0.51);
+  }
+  .project:nth-child(odd) {
+    background-color: rgba(240, 240, 240, 0.35);
+  }
+}
+.span9 {
+  margin-left: 2px;
+}
+.navbar {
+  font-size: 13px;
+  margin-bottom: 1px;
+  .navbar-inner {
+    min-height: 30px;
+  }
+  .brand {
+    padding: 5px;
+    font-size: 18px;
+  }
+  .nav>li>a {
+    padding: 5px;
+  }
+}
+.container-fluid {
+  padding: 0 3px;
+}

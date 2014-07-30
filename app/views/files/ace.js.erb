@@ -144,7 +144,9 @@ $(window).load(function() {
   id = $("#files ul li a")[0].className.substring(4)
   undoManager = ace.edit("file_text" + id).getSession().getUndoManager()
 })
-
+$(document).on('click', function() {
+  $("#editor_context").remove()
+})
 $(document).on('click', "#files ul li a", function() {
   if(!this.className)
     return

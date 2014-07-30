@@ -1,4 +1,11 @@
 ru:
+  Listing projects: 'Список проектов'
+  Open: 'Открыть'
+  Edit: 'Редактировать'
+  Destroy: 'Удалить'
+  created_at: 'Создан'
+  no_projects: 'Проектов не найдено'
+
 
   #dialogs
   save: 'Сохранить'

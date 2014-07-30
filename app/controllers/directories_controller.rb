@@ -4,6 +4,7 @@ class DirectoriesController < ApplicationController
   # GET /directories
   # GET /directories.json
   def index
+    params[:project] = URI.parse(URI.encode(params[:project])).to_s if params[:project]
     if session[:project_id].present?
       if params[:project].present?
         @project = Project.find_by(id: session[:project_id], project_url: params[:project].sub('.html', '')) || (page_not_found and return)
