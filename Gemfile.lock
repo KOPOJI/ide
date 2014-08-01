@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 95de3b0e288aede73d38a18cce30cde66e733558
+  revision: fd11fc20410f8c70f9f9be48403de923dff15932
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -58,6 +58,10 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    fancytree-rails (0.0.2)
+      jquery-rails
+      jquery-ui-rails
+      railties (>= 3.2.0, < 5.0)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     haml (4.0.5)
@@ -78,6 +82,8 @@ GEM
     jquery-turbolinks (2.0.2)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -156,11 +162,13 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   devise
+  fancytree-rails
   font-awesome-rails
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   mysql2
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)

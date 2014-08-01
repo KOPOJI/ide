@@ -1,7 +1,7 @@
-<ul class="nav nav-list list-files">
+<ul>
 
   <% files.each do |f| %>
-      <li>
+      <li id="id<%= directory_id f.directory %>">
         <%= link_to "#{file_type_image f.extension} #{f.name}".html_safe, create_url(directory_path(f.directory), f.name), 'data-id' => f.id, onclick: 'return false' %>
       </li>
   <% end %>

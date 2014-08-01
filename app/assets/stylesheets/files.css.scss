@@ -6,32 +6,40 @@
   margin: 1px;
   margin-top:-2px;
 }
-.left .list-files li {
-  display: block;
-}
+//.left .list-files li {
+//  display: block;
+//}
 .left .well {
   padding: 0;
 }
 #files {
   height: 100%;
 }
-.code {
-  position: absolute!important;
-  top: 70px!important;
-  right: 0!important;
-  bottom: 0!important;
-  left: 275px!important;
+#files .tab-content .tab-pane .code {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  left: 275px;
+  border-top: 5px solid #DADADA;
+  .ace_gutter {
+    background-color: #DADADA;
+  }
 }
 .unsaved {
   color:navy
 }
 .close_tab {
   position: relative;
-  right: -7px;
-  top:-10px;
+  right: 0;
+  top:-5px;
+  border-radius: 5px;
+  margin-left: 5px;
   cursor: pointer;
-  color: red;
+  color: #AAA;
+  font-size: 16px;
   &:hover {
-    text-shadow: 0 0 10px blue;
+    color: #333;
+    text-shadow: 0 0 20px blue;
   }
 }

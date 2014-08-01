@@ -1,5 +1,4 @@
 $ ->
-
   if $("#files ul li").length
     #show first tab
     $("#files ul li a:first").tab('show')
@@ -41,3 +40,5 @@ $ ->
         $("#file#{id}").parent().show()
       , 'script'
     return false
+
+  $('#tree3').fancytree()
