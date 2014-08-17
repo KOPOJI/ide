@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require font-awesome
+ *= require jquery-ui
  *= require fancytree/skin-xp/ui.fancytree
  *= require_tree .
  */

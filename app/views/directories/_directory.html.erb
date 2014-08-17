@@ -1,6 +1,6 @@
 <li class="folder" data-id="<%= directory.id %>">
   <a><%= fa_icon 'folder-open' %> <%= directory.name %></a>
+  <%= nested_directory directory.child, @showed %>
   <%= render 'files/file', files: directory.files if directory.files.any? %>
   <% @showed << directory.id %>
-  <%= nested_directory directory.child, @showed %>
 </li>

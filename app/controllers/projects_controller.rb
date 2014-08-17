@@ -1,6 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  def setSession
+    render nothing: true and return if params[:id].nil? or params[:type].nil? or !request.xhr?
+    session["#{params[:type]}_id".to_sym] = params[:id].to_i
+    render nothing: true and return
+  end
   # GET /projects
   # GET /projects.json
   def index

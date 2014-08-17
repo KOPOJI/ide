@@ -16,14 +16,4 @@ module DirectoriesHelper
     end
     file_path
   end
-
-  def directory_id dir
-    return dir.id if dir.parent_id == -1 || dir.parent_id.nil?
-    dir_id = dir.parent_id if dir.present? && dir.parent_id != -1
-    while dir.parent
-      dir_id = "#{dir_id}.#{dir.id}"
-      dir = dir.parent
-    end
-    dir_id
-  end
 end
