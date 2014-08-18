@@ -16,4 +16,11 @@ module DirectoriesHelper
     end
     file_path
   end
+  def nested_directory_tree(directories, showed = [])
+    directories.map do |directory, sub_directory|
+      return if directory.id == directory.parent_id
+      next if showed.include? directory.id
+      render(directory)
+    end.join(', ').html_safe
+  end
 end

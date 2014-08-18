@@ -1,6 +1,6 @@
 Ide::Application.routes.draw do
 
-  get '/directories/getTree', to: 'directories#getTree'
+  get '/directories/get_tree', to: 'directories#get_tree'
   post '/projects/setSession', to: 'projects#setSession'
   resources :directories
   delete '/directories', to: 'directories#destroy'

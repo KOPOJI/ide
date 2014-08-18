@@ -1,7 +1,5 @@
-<ul>
-  <% files.each do |f| %>
-      <li>
-        <%= link_to "#{file_type_image f.extension} #{f.name}".html_safe, create_url(directory_path(f.directory), f.name), 'data-id' => f.id, onclick: 'return false' %>
-      </li>
-  <% end %>
-</ul>
+<% ret = [] %>
+<% files.each do |f| %>
+    <% ret << "{\"title\": \"#{f.name}\", \"key\": #{f.id}, \"id\": #{f.id}, \"cuted\": #{session[:cut_id] == f.id}}" %>
+<% end %>
+<%= raw ret.join ', ' %>

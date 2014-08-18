@@ -1,4 +1,7 @@
 class DirectoriesController < ApplicationController
+
+  include DirectoriesHelper
+
   #before_action :set_directory, only: [:show, :edit, :update]
 
   # GET /directories
@@ -17,23 +20,16 @@ class DirectoriesController < ApplicationController
     else
       page_not_found and return
     end
-    @directories = @project.directories.to_a
+    @directories = @project.directories
     @opened_files = DataSet.where(opened: true, project_id: @project.id)
+
     @showed = []
   end
 
-  def getTree
-    render status: :unprocessable_entity and return unless request.xhr? or params[:id].nil? or Directory.where(id: params[:id], project_id: session[:project_id]).count.zero?
-    subdirectories = []
-    id = params[:id].to_i
-    Directory.where(parent_id: id, removed: nil, project_id: session[:project_id]).select(:id, :parent_id, :name).each do |dir|
-      lazy = DataSet.where(directory_id: id, project_id: session[:project_id]).count.zero?
-      subdirectories << {title: dir.name, key: dir.id, folder: true, lazy: !(lazy  and dir.child.count.zero?), id: dir.id, cuted: session[:cut_id] == dir.id}
-    end
-    DataSet.where(directory_id: id, removed: nil, project_id: session[:project_id]).select(:id, :directory_id, :name).each do |file|
-      subdirectories << {title: file.name, key: file.id, id: file.id, cuted: session[:cut_id] == file.id}
-    end
-    render json: subdirectories and return
+  def get_tree
+    @showed = []
+    @directories = Directory.where project_id: session[:project_id]
+    render 'get_tree.js.erb'
   end
   # GET /directories/1
   # GET /directories/1.json

@@ -1,18 +1,10 @@
 <% content_for :left_sidebar do %>
   <nobr>
-    <% directory = @directories.shift %>
-    <div id="tree" name="<%= directory.name %>" data-id="<%= directory.id %>">
+    <div id="tree">
     </div>
   </nobr>
 <% end %>
 <%= render 'files/tab' %>
 
-<%= javascript_tag render template: 'directories/directories.js.erb.coffee' %>
-<%= javascript_tag render template: 'files/files.js.erb.coffee' %>
-<ul id="treeData" style="display: none;">
-  <li class="header folder">
-    <a><%#= directory.name %></a>
-    <%#= nested_directory @directories, @showed %>
-    <%#= render 'files/file', files: directory.files if directory.present? && directory.files.any? %>
-  </li>
-</ul>
+<%#= javascript_tag render template: 'directories/directories.js.erb.coffee' %>
+<%#= javascript_tag render template: 'files/files.js.erb.coffee' %>

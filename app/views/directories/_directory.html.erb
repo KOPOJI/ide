@@ -1,6 +1,3 @@
-<li class="folder" data-id="<%= directory.id %>">
-  <a><%= fa_icon 'folder-open' %> <%= directory.name %></a>
-  <%= nested_directory directory.child, @showed %>
-  <%= render 'files/file', files: directory.files if directory.files.any? %>
-  <% @showed << directory.id %>
-</li>
+{"title": "<%= directory.name %>", "key": <%= directory.id %>, "folder": true, "id": <%= directory.id %>, "cuted": <%= session[:cut_id] == directory.id %>, "children": [<%= nested_directory_tree directory.child, @showed %>
+<%= raw ", #{render 'files/file', files: directory.files}" if directory.files.any? %>]}
+<% @showed << directory.id %>

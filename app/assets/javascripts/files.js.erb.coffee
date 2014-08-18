@@ -20,8 +20,8 @@ $ ->
     $("#file" + $(@).attr('data-id')).show()
 
   #open file on link dblclick
-  $(document).on 'dblclick', '.list-files a', (e) ->
-    id = $(@).attr("data-id")
+  $(document).on 'dblclick', '#tree span.fancytree-title', (e) ->
+    id = $.ui.fancytree.getNode(@).data.id
 
     if($(".file#{id}").length == 1)
       $('#files ul li').removeClass('active')
@@ -42,18 +42,10 @@ $ ->
       , 'script'
     return false
 
+
   tree = $('#tree').fancytree
-    source: [
-      title: $('#tree').attr('name'), key: $('#tree').attr('data-id'), folder: true, lazy: true
-    ]
-    lazyload: (event, data) ->
-      node = data.node
-      data.result = {
-        url: 'directories/getTree'
-        data:
-          id: node.key
-          title: node.title
-      }
+    source:
+      url: '/directories/get_tree'
     extensions: ['dnd'],
     autoCollapse: true
     dnd:
@@ -62,9 +54,9 @@ $ ->
       preventVoidMoves: true,
       preventRecursiveMoves: true,
       dragStart: (node, data) ->
-        return true;
+        return true; #....
       dragEnter: (node, data) ->
-        return true;
+        return true; #....
       dragDrop: (node, data) ->
         data.otherNode.moveTo(node, data.hitMode)
 
